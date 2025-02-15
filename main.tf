@@ -100,6 +100,7 @@ resource "azurerm_linux_virtual_machine" "webserver" {
   location              = azurerm_resource_group.rg.location
   network_interface_ids = [azurerm_network_interface.webserver.id]
   size                  = "Standard_B1s"
+  depends_on = [ azurerm_network_interface_security_group_association.webserver ]
 
   os_disk {
     name                 = "${var.labelPrefix}A05OSDisk"
